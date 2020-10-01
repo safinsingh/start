@@ -1,49 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>~</title>
-    </head>
-    <style>
-        html,
-        body,
-        div,
-        h1 {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-        }
-        body {
-            line-height: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #050505;
-            color: #cacaca;
-            font-size: 40px;
-            height: 100vh;
-            font-family: "Iosevka", monospace;
-        }
-    </style>
-    <body onload="startTime()">
-        <h1 id="time"></h1>
-    </body>
-    <script>
-        const checkTime = (t) => {
-            if (t < 10) {
-                t = "0" + t;
-            }
-            return t;
-        };
-        const startTime = () => {
-            const today = new Date();
-            const h = today.getHours();
-            const m = checkTime(today.getMinutes());
-            document.getElementById("time").innerHTML = `~ ${h}:${m} ~`;
-            const t = setTimeout(startTime, 30000);
-        };
-    </script>
+	<head>
+		<meta charset="utf-8" />
+		<title>~</title>
+	</head>
+	<style>
+		html,
+		body,
+		h1 {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+		}
+		body {
+			line-height: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #050505;
+			color: #cacaca;
+			font-size: 3rem;
+			height: 100vh;
+			font-family: 'Iosevka', monospace;
+			font-weight: 400;
+		}
+	</style>
+	<body onload="init()">
+		<h1 id="time"></h1>
+	</body>
+	<script>
+		const el = document.getElementById('time')
+		const init = () => {
+			const now = new Date()
+			const hour = now.getHours()
+			const min = now.getMinutes()
+			el.innerHTML = `~ ${hour}:${min > 10 ? min : '0' + min} ~`
+			setTimeout(init, 2000)
+		}
+	</script>
 </html>
